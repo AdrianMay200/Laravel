@@ -17,4 +17,5 @@ class notas extends Model
     public function Temas(){
         return $this->belongsTo(temas::class,'id_temas');
     }
+    public $timestamps=false;
 }

@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\ingenieria;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
 
@@ -21,6 +22,8 @@ class UserFactory extends Factory
         $var1 = fake()->randomElement(['1807', '1907', '2007', '2107', '2207']);
         $var2 = fake()->unique()->randomNumber(4, true);
         $control = $var1.$var2;
+        $inge=ingenieria::inRandomOrder()->first();
+        
         return [
             'name' => $name,
             'email' => $name.'.'.$control.'@itsmotul.edu.mx',
@@ -28,7 +31,10 @@ class UserFactory extends Factory
             'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
             'control' => $control,
             'remember_token' => Str::random(10),
+            'id_ingenierias'=>$inge->id,
         ];
+
+
     }
 
     /**

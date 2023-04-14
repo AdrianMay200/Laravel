@@ -23,6 +23,7 @@ class User extends Authenticatable
     public function Asignaturas(){
         return $this->hasMany(asignaturas::class,'id_users');
     }
+    public $timestamps=false;
 
     /**
      * The attributes that are mass assignable.

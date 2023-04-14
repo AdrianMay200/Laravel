@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\asignaturas;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -16,7 +17,14 @@ class TemasFactory extends Factory
      */
     public function definition(): array
     {
+        $Asi=asignaturas::inRandomOrder()->first();
         return [
+            'nombre'=>fake()->word(),
+            'id_asignaturas'=>$Asi->id,
+            
+
+
+            
             //
         ];
     }

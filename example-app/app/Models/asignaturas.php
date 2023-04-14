@@ -21,4 +21,5 @@ class asignaturas extends Model
     public function Recordatorios(){
         return $this->hasMany(recordatorios::class,'id_asignaturas');
     }
+    public $timestamps=false;
 }

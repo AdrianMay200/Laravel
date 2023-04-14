@@ -20,4 +20,5 @@ class temas extends Model
     public function Recordatorios(){
         return $this->hasMany(recordatorios::class,'id_temas');
     }
+    public $timestamps=false;
 }

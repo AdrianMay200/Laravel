@@ -2,6 +2,8 @@
 
 namespace Database\Factories;
 
+use App\Models\asignaturas;
+use App\Models\temas;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -16,7 +18,14 @@ class RecordatoriosFactory extends Factory
      */
     public function definition(): array
     {
+        $Asi=asignaturas::inRandomOrder()->first();
+        $Tem=temas::inRandomOrder()->first();
         return [
+            'fecha'=>fake()->date(),
+            'recordatorio'=>fake()->sentence(),
+            'importancia'=>fake()->randomDigit(),
+            'id_asignaturas'=>$Asi->id,
+            'id_temas'=>$Tem->id,
             //
         ];
     }

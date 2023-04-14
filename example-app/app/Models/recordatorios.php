@@ -17,4 +17,5 @@ class recordatorios extends Model
         return $this->belongsTo(asignaturas::class,'id_asignaturas');
 
     }
+    public $timestamps=false;
 }

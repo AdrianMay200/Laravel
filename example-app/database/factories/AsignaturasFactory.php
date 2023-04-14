@@ -21,7 +21,7 @@ class AsignaturasFactory extends Factory
         return [
             'nombre'=>fake()->word(),
             'clave'=>fake()->regexify('[A-Z]{5}[0-4]{3}'),
-            'id_asignatura'=>$asignatura->id,
+            'id_users'=>$asignatura->id,
             //
         ];
     }

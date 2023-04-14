@@ -15,7 +15,7 @@ class TemasSeeder extends Seeder
     {
         //
         temas::factory()
-        ->count(150)
+        ->count(50)
         ->create();
     }
 }
