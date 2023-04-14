@@ -19,7 +19,9 @@ return new class extends Migration
             $table->string('control');
             $table->string('password');
             $table->rememberToken();
-            $table->timestamps();
+            $table->foreignId('id_ingenierias')
+              ->constrained('ingenierias')
+              ->cascadeOnUpdate();
         });
     }
 

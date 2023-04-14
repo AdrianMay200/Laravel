@@ -7,10 +7,22 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use App\Models\notas;
+use App\Models\ingenieria;
+use App\Models\asignaturas;
 
 class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
+    public function Ingenierias(){
+        return $this->belongsTo(ingenieria::class,'id_ingenierias');
+    }
+    public function Notas(){
+        return $this->hasMany(notas::class,'id_users');
+    }
+    public function Asignaturas(){
+        return $this->hasMany(asignaturas::class,'id_users');
+    }
 
     /**
      * The attributes that are mass assignable.
