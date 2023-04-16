@@ -18,4 +18,6 @@ class notas extends Model
         return $this->belongsTo(temas::class,'id_temas');
     }
     public $timestamps=false;
+
+    protected $fillable = ['palabrasC','resumen','contenido','id_users','id_temas'];
 }
