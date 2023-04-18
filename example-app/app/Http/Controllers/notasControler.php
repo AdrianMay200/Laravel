@@ -27,8 +27,8 @@ class notasControler extends Controller
 
     {
         //
-        
-        return view('notas.create');
+        $temas=temas::all();
+        return view('notas.create', compact('temas'));
 
     }
 

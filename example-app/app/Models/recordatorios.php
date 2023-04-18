@@ -4,8 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\asignaturas;
 use App\Models\temas;
+use App\Models\User;
 
 class recordatorios extends Model
 {
@@ -13,8 +13,8 @@ class recordatorios extends Model
   
     public function Temas(){
         return $this->belongsTo(temas::class,'id_temas');
-    }  public function Asignaturas(){
-        return $this->belongsTo(asignaturas::class,'id_asignaturas');
+    }  public function User(){
+        return $this->belongsTo(User::class,'id_users');
 
     }
     public $timestamps=false;

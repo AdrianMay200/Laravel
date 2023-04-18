@@ -10,6 +10,7 @@ use Laravel\Sanctum\HasApiTokens;
 use App\Models\notas;
 use App\Models\ingenieria;
 use App\Models\asignaturas;
+use App\Models\recordatorios;
 
 class User extends Authenticatable
 {
@@ -22,6 +23,9 @@ class User extends Authenticatable
     }
     public function Asignaturas(){
         return $this->hasMany(asignaturas::class,'id_users');
+    }
+    public function Recordatorios(){
+        return $this->hasMany(recordatorios::class,'id_asignaturas');
     }
     public $timestamps=false;
 

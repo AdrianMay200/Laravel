@@ -19,8 +19,8 @@ return new class extends Migration
             $table->foreignId('id_temas')
              ->constrained('temas')
              ->cascadeOnUpdate();
-            $table->foreignId('id_asignaturas')
-             ->constrained('asignaturas')
+            $table->foreignId('id_users')
+             ->constrained('users')
              ->cascadeOnUpdate();
         });
     }

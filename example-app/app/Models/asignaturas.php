@@ -18,8 +18,6 @@ class asignaturas extends Model
     public function Temas(){
         return $this->hasMany(temas::class,'id_asignaturas');
     }
-    public function Recordatorios(){
-        return $this->hasMany(recordatorios::class,'id_asignaturas');
-    }
+  
     public $timestamps=false;
 }

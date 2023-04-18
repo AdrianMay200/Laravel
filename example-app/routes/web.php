@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\recordatoriosController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\notasControler;
 
@@ -30,5 +31,8 @@ Route::middleware('auth')->group(function () {
 });
 Route::resource("/notas", notasControler::class)->middleware('auth');
 Route::get('/notas', [notasControler::class, 'index'])->name('notas.index')->middleware('auth');;
+
+Route::resource("/recordatorios", recordatoriosController::class)->middleware('auth');
+Route::get('/recordatorios', [recordatoriosController::class, 'index'])->name('recordatorios.index')->middleware('auth');;
 
 require __DIR__.'/auth.php';
