@@ -38,16 +38,15 @@ class notasControler extends Controller
     public function store(Request $request)
     {
         //
+     
         $usuario_id =auth()->id();
-        $temas = temas::where('nombre',$request->temas)
-            ->first();
 
         $nota= new notas;
         $nota-> palabrasC=$request->Palabras_clave;
         $nota-> resumen=$request->Resumen;
         $nota-> contenido=$request->Contenido;
         $nota-> id_users=$usuario_id;
-        $nota-> id_temas=$temas->id;
+        $nota-> id_temas=$request->temas;
         $nota-> save();
         return redirect()->route('notas.index')->with('success','Nota Creada');
 
@@ -72,7 +71,8 @@ class notasControler extends Controller
     {
         //
         $nota=notas::find($id);
-        return view('notas.edit', compact('nota'));
+        $temas=temas::all();
+        return view('notas.edit', compact('nota','temas'));
 
        
     }
@@ -92,7 +92,7 @@ class notasControler extends Controller
          $nota-> palabrasC=$request->Palabras_clave;
          $nota-> resumen=$request->Resumen;
          $nota-> contenido=$request->Contenido;
-         $nota-> id_temas=$temas->id;
+         $nota-> id_temas=$request->temas;
          $nota-> save();
          return redirect()->route('notas.index')->with('success','Nota Creada');
     }

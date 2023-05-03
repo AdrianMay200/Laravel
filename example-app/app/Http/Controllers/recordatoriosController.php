@@ -26,7 +26,8 @@ class recordatoriosController extends Controller
     public function create()
     {
         //
-        return view('recordatorios.create');
+        $temas=temas::all();
+        return view('recordatorios.create',compact('temas'));
     }
 
     /**
@@ -36,15 +37,14 @@ class recordatoriosController extends Controller
     {
         //
         $usuario_id =auth()->id();
-        $temas = temas::where('nombre',$request->temas)
-            ->first();
+
 
         $recordatorio= new recordatorios;
         $recordatorio-> fecha=$request->Fecha;
         $recordatorio-> recordatorio=$request->Recordatorio;
         $recordatorio-> importancia=$request->Importancia;
         $recordatorio-> id_users=$usuario_id;
-        $recordatorio-> id_temas=$temas->id;
+        $recordatorio->id_temas=$request->temas;
         $recordatorio-> save();
         return redirect()->route('recordatorios.index')->with('success','recordatorio Creada');
     }
@@ -67,7 +67,8 @@ class recordatoriosController extends Controller
     {
         //
         $recordatorio=recordatorios::find($id);
-        return view('recordatorios.edit', compact('recordatorio'));
+        $temas=temas::all();
+        return view('recordatorios.edit', compact('recordatorio','temas'));
 
 
     }
@@ -87,7 +88,7 @@ class recordatoriosController extends Controller
         $recordatorio-> fecha=$request->Fecha;
         $recordatorio-> recordatorio=$request->Recordatorio;
         $recordatorio-> importancia=$request->Importancia;
-        $recordatorio-> id_temas=$temas->id;
+        $recordatorio-> id_temas=$request->temas;
         $recordatorio-> save();
         return redirect()->route('recordatorios.index')->with('success','Nota Creada');
     }

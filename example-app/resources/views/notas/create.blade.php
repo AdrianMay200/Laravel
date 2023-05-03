@@ -1,23 +1,50 @@
-<form action="{{ url('notas') }}" method="post">
-        {!! csrf_field() !!}
-    <div>
-    <label>hhh</label>    
-    <input type="text" name="Palabras_clave" id="Palabras_clave">
+<x-app-layout>
 
-        <input type="text" name="Resumen" id="Resumen">
+<div >
+        <h1 class="p-4 mt-2 text-3xl font-bold text-center text-orange-300 bg-gray-800">
+            Crear Notas
+        </h1>
+    </div>
+
+<form class="w-full max-w-lg mx-auto p-28" action="{{ url('notas') }}" method="post">
+{!! csrf_field() !!}
+  <div class="flex flex-wrap -mx-3 mb-6">
+    <div class="w-full px-3">
+      <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
+        Palabras Clave
+      </label>
+      <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"  type="text" name="Palabras_clave" id="Palabras_clave">
+    </div>
+    <div class="w-full px-3">
+      <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
+        Resumen
+      </label>
+      <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"  type="text" name="Resumen" id="Resumen">
+    </div>
+
+    <div class="w-full px-3">
+      <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
+        Contenido
+      </label>
+      <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"  type="text" name="Contenido" id="Contenido">
+    </div>
 
 
-        <input type="text" name="Contenido" id="Contenido">
-
-        
-
-        <input type="submit" value="Enviar">
-        
-        <select id="subject" class="block mt-1 w-full h-2/4 border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600 rounded-md shadow-sm" type="text" name="subject" :value="old('subject')" required autofocus autocomplete="subject">
+    <div class="w-full px-3">
+      <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
+        Temas
+      </label>
+      <select id="temas" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" type="text" name="temas" :value="old('temas')" required autofocus autocomplete="temas">
     @foreach($temas as $tema)
         <option value="{{ $tema->id }}">{{ $tema->nombre }}</option>
     @endforeach
 </select>
     </div>
+  </div>
+  <!-- Agrega más campos de formulario aquí -->
+  <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+    Enviar
+  </button>
 </form>
+</x-app-layout>
 
